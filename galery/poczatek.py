@@ -1,6 +1,6 @@
 import os
 
-pat = '/home'
+pat = '/'
 os.chdir(pat)
 scierzka = os.getcwd()
 l = list(os.listdir())
