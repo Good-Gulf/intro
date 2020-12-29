@@ -11,15 +11,24 @@ elif platformOS == 'win32':
 def dirlist(pat):
     os.chdir(pat)
     l = list(os.listdir())
+    hisPat = []
     print(l)
     count = 0
     for count in range(0, len(l)):
-        pat = pat+'/'+l[count]
-        count = 0
-        os.chdir(pat)
         l = list(os.listdir())
-        print(pat)
+        newpat = pat+'/'+l[count]
+        hisPat.append(newpat)
+        # count = 0
+        try:
+            os.chdir(newpat)
+        except:
+            print('error 13')
+            pat=hisPat[count-1]
+        count = count+1
+        print(newpat)
         print(l)
+        print(count)
+        print(hisPat)
 
 def dirtree():
     for (root,dirs,files) in os.walk('Test', topdown=True):
@@ -29,11 +38,11 @@ def dirtree():
         print ('--------------------------------')
 
 if __name__ == '__main__':
-    # dirlist(pat)
+    dirlist(pat)
     # dirtree()
 
-    for root, dirs, files in os.walk(".", topdown=False):
-        for name in files:
-            print(os.path.join(root, name))
-        for name in dirs:
-            print(os.path.join(root, name))
+    # for root, dirs, files in os.walk(".", topdown=False):
+    #     for name in files:
+    #         print(os.path.join(root, name))
+    #     for name in dirs:
+    #         print(os.path.join(root, name))
