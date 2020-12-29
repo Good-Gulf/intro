@@ -15,16 +15,15 @@ def dirlist(pat):
     print(l)
     count = 0
     for count in range(0, len(l)):
-        l = list(os.listdir())
         newpat = pat+'/'+l[count]
         hisPat.append(newpat)
-        # count = 0
         try:
             os.chdir(newpat)
         except:
-            print('error 13')
+            print('error 13 - Permission denied')
             pat=hisPat[count-1]
         count = count+1
+        pat = l[count - 1]
         print(newpat)
         print(l)
         print(count)
