@@ -11,9 +11,13 @@ elif platformOS == 'win32':
 dir_list = []
 file_list = []
 
-def WhatIsWhhat(pat):
-    os.chdir(pat)
-    ListOfAll = list(os.listdir())
+
+def what_is_what(pat):
+    try:
+        os.chdir(pat)
+        ListOfAll = list(os.listdir())
+    except:
+        print('ERROR')
     for count in range(0, len(ListOfAll)):
         if os.path.isfile(ListOfAll[count]):
             file_list.append(ListOfAll[count])
@@ -22,6 +26,9 @@ def WhatIsWhhat(pat):
 
 
 if __name__ == '__main__':
-    WhatIsWhhat("/home/drak")
+    try:
+        what_is_what("/home/drak")
+    except:
+        pass
     print(dir_list)
-    print(file_list)
+print(file_list)
