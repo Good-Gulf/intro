@@ -1,20 +1,27 @@
 import os
+import sys
 
-pat = '/'
-os.chdir(pat)
-scierzka = os.getcwd()
-l = list(os.listdir())
-print(l)
-count = 0
-for count in range(0, len(l)):
-    pat = pat+'/'+l[count]
-    count = 0
+platformOS = sys.platform
+
+if platformOS == 'linux':
+    pat = '/'
+elif platformOS == 'win32':
+    pat = 'c:'
+
+dir_list = []
+file_list = []
+
+def WhatIsWhhat(pat):
     os.chdir(pat)
-    l = list(os.listdir())
-    print(pat)
-    print(l)
+    ListOfAll = list(os.listdir())
+    for count in range(0, len(ListOfAll)):
+        if os.path.isfile(ListOfAll[count]):
+            file_list.append(ListOfAll[count])
+        else:
+            dir_list.append(ListOfAll[count])
+
 
 if __name__ == '__main__':
-    print(scierzka)
-    # print (len(l))
-    # print(l)
+    WhatIsWhhat("/home/drak")
+    print(dir_list)
+    print(file_list)
