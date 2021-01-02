@@ -9,39 +9,27 @@ elif platformOS == 'win32':
     pat = 'c:'
 
 def dirlist(pat):
-    os.chdir(pat)
-    l = list(os.listdir())
+    os.chdir(pat) # os.chdir - Zmiana ścieżki dostępu na podana w parametrze jako str
+    l = list(os.listdir())# przypisanie listy plików i katalogów z aktualnej lokalizacji do zmiennaj l
     hisPat = []
     print(l)
     count = 0
     for count in range(0, len(l)):
         newpat = pat+'/'+l[count]
         hisPat.append(newpat)
+        # print('sciezka'+hisPat)
         try:
             os.chdir(newpat)
         except:
-            print('error 13 - Permission denied')
+            print('error 13 - brak dostępu')
             pat=hisPat[count-1]
         count = count+1
         pat = l[count - 1]
         print(newpat)
-        print(l)
-        print(count)
-        print(hisPat)
+        # print(l)
+        # print(count)
+        # print('sciezka'+hisPat)
 
-def dirtree():
-    for (root,dirs,files) in os.walk('Test', topdown=True):
-        print (root)
-        print (dirs)
-        print (files)
-        print ('--------------------------------')
 
 if __name__ == '__main__':
     dirlist(pat)
-    # dirtree()
-
-    # for root, dirs, files in os.walk(".", topdown=False):
-    #     for name in files:
-    #         print(os.path.join(root, name))
-    #     for name in dirs:
-    #         print(os.path.join(root, name))
