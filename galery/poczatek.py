@@ -4,7 +4,7 @@ import sys
 platformOS = sys.platform
 
 if platformOS == 'linux':
-    pat = '/'
+    pat = '/home/drak/'
 elif platformOS == 'win32':
     pat = 'c:'
 
@@ -34,6 +34,13 @@ def change_path():
     except:
         print('Error - brak dostepu')
 
+def find_pic(file_list):
+
+    template = '.jpg'
+
+for count in range(0, len(file_list)):
+    if file_list[count].search(template, file_list[count]) > 0:
+        print('pliki jpg'+file_list[count])
 
 if __name__ == '__main__':
     try:
@@ -41,5 +48,7 @@ if __name__ == '__main__':
     except:
         pass
 
+find_pic(file_list)
 print(dir_list)
 print(file_list)
+print(os.getcwd())
