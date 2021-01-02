@@ -9,13 +9,19 @@ elif platformOS == 'win32':
     pat = 'c:'
 
 def dirlist(pat):
-    os.chdir(pat) # os.chdir - Zmiana ścieżki dostępu na podana w parametrze jako str
-    l = list(os.listdir())# przypisanie listy plików i katalogów z aktualnej lokalizacji do zmiennaj l
-    hisPat = []
-    print(l)
-    count = 0
+    os.chdir(pat)  # os.chdir - Zmiana ścieżki dostępu na podana w parametrze jako str
+    l = list(os.listdir())  # przypisanie listy plików i katalogów z aktualnej lokalizacji do zmiennaj l
+    # hisPat = []
+    # tmpPat = str
+    # newpat = str
+    # print(l)
+    # count = 0
     for count in range(0, len(l)):
-        newpat = pat+'/'+l[count]
+
+        if newpat == '':
+            newpat = pat + l[count]
+        else:
+            newpat = newpat + '/' + l[count]
         hisPat.append(newpat)
         # print('sciezka'+hisPat)
         try:
