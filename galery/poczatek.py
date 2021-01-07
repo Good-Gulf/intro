@@ -4,12 +4,14 @@ import sys
 platformOS = sys.platform
 
 if platformOS == 'linux':
-    pat = '/home/drak/'
+    pat = '/home/drak'
 elif platformOS == 'win32':
     pat = 'c:'
 
 dir_list = []
 file_list = []
+template = 'jpg'
+pic = str
 
 
 def what_is_what(pat):
@@ -28,27 +30,43 @@ def what_is_what(pat):
 def change_path():
 
     tmpppath = pat
-    newpath = temppath
+    newpath = pat
     try:
         os.chdir( pat + '/' + dir_list[count])
     except:
         print('Error - brak dostepu')
 
-def find_pic(file_list):
 
-    template = '.jpg'
+def find_pic(ext,files_list):
 
-for count in range(0, len(file_list)):
-    if file_list[count].search(template, file_list[count]) > 0:
-        print('pliki jpg'+file_list[count])
+    count = 0
+    # picture = str
+    fl = files_list
+
+
+for count in range(0,len(file_list)):
+    if fl[count].split('.')[1] == template:
+        print('jest'+str(fl[count]))
+    print(f"test"+{fl[count]})
+
+    # for count in range(0,len(file_list)):
+    #     found = re.search(template, file_list[count])
+    #     if found:
+    #         picture = found.group()
+    #     print('plik '+file_list[count])
+    #     print(picture)
+
 
 if __name__ == '__main__':
-    try:
-        what_is_what(pat)
-    except:
-        pass
+    # try:
+    #     # what_is_what(pat)
+    #     find_pic(file_list,template)
+    # except:
+    #     find_pic(file_list,template)
+    #     pass
 
-find_pic(file_list)
-print(dir_list)
+    what_is_what(pat)
+    find_pic(template,file_list)
+# print(dir_list)
 print(file_list)
 print(os.getcwd())
