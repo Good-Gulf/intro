@@ -4,9 +4,9 @@ import sys
 platformOS = sys.platform
 
 if platformOS == 'linux':
-    pat = '/home/drak'
+    pat = '/'
 elif platformOS == 'win32':
-    pat = 'c:'
+    pat = 'c:/'
 
 dir_list = []
 file_list = []
@@ -40,8 +40,6 @@ def change_path():
 def find_pic(ext,files_list):
 
     count = 0
-    # picture = str
-    # fl = files_list
 
     print('testowanie')
     print(file_list)
@@ -50,23 +48,10 @@ def find_pic(ext,files_list):
         if files_list[count].split('.')[-1] == ext:
             print('testowanie-loop')
             print(files_list[count])
-        # print(fl[count])
-
-    # for count in range(0,len(file_list)):
-    #     found = re.search(template, file_list[count])
-    #     if found:
-    #         picture = found.group()
-    #     print('plik '+file_list[count])
-    #     print(picture)
 
 
 if __name__ == '__main__':
-    # try:
-    #     # what_is_what(pat)
-    #     find_pic(file_list,template)
-    # except:
-    #     find_pic(file_list,template)
-    #     pass
+
 
     what_is_what(pat)
     find_pic(template,file_list)
