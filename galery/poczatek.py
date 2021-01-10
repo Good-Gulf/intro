@@ -4,12 +4,13 @@ import sys
 platformOS = sys.platform
 
 if platformOS == 'linux':
-    pat = '/'
+    pat = '/home/drak'
 elif platformOS == 'win32':
     pat = 'c:/'
 
 dir_list = []
 file_list = []
+pict_list = []
 template = 'jpg'
 pic = str
 
@@ -47,14 +48,17 @@ def find_pic(ext,files_list):
     for count in range(0,len(files_list)):
         if files_list[count].split('.')[-1] == ext:
             print('testowanie-loop')
-            print(files_list[count])
+            pict_list.append(os.getcwd()+'/'+files_list[count])
+    return pict_list
 
 
 if __name__ == '__main__':
-
 
     what_is_what(pat)
     find_pic(template,file_list)
 print('test3')
 print(file_list)
 print(os.getcwd())
+print(pict_list)
+for count in range(0,len(pict_list)):
+    print(pict_list[count])
